@@ -1,15 +1,13 @@
-import { useCallback, useState } from 'react';
-
+import { useCallback} from 'react';
 import { SexControl, YearControl }  from './controls';
 
 import './ControlPanel.css';
 
-export default function ControlPanel() {
-  const [sex, setSex] = useState('Females');
-  const [year, setYear] = useState(2017);
+export default function ControlPanel({ setSex, setYear, sex, year}) {
 
   const handelSexChange = useCallback(
     (nextValue) => {
+      console.log(nextValue)
       setSex(nextValue);
     },
     [setSex],
@@ -17,6 +15,7 @@ export default function ControlPanel() {
 
   const handelYearChange = useCallback(
     (nextValue) => {
+      console.log(nextValue);
       setYear(nextValue);
     },
     [setYear],

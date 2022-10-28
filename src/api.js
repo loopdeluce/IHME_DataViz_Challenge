@@ -1,7 +1,13 @@
 import axios from 'axios';
+import * as d3 from 'd3';
+import csvFile from './dataCopy/GBD_2017_death_rate_opioid_use_disorders_all_ages.csv';
+
 
 const api = axios.create({
   baseURL: 'https://vizhub.healthdata.org/data-viz-challenge-api/api/',
+});
+const newApi = axios.create({
+  baseURL: 'http://127.0.0.1:8080/',
 });
 
 export async function fetchLocationMetadata() {
@@ -35,6 +41,12 @@ export async function fetchMetadata() {
 
 export async function fetchCitation() {
   const { data } = await api.get('citation');
+  return data;
+}
+
+export async function fetchCSVData() {
+  // console.log('Fetching now')
+  const data = await d3.csv(csvFile);
   return data;
 }
 
