@@ -1,3 +1,7 @@
 .viz {
     margin: 8px;
 }
+
+#map { 
+    height: 180px;
+}
