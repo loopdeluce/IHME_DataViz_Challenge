@@ -10,3 +10,9 @@ Data Definitions:
 - Mean: This is the mean death rate (number of deaths per 100,000 people) due to opioid use disorders for a given location, sex, and year.
 - Upper: This is the upper bound of uncertainty for the mean
 - Lower: This is the lower bound of uncertainty for the mean
+
+LB Sources 10/31:
+Downloaded the country polygons here: https://geojson-maps.ash.ms/
+My sources for learning a choropleth map are here: https://leafletjs.com/examples/choropleth/, https://tmsvr.com/making-an-interactive-map-with-react-and-leaflet/, https://tmsvr.com/react-leaflet-map-performance-issues/ 
+Colors for the map were chosen from here: https://colorbrewer2.org/#type=sequential&scheme=YlGnBu&n=6
+Other main sources I referenced: https://blog.datawrapper.de/choroplethmaps/, Google, StackOverflow

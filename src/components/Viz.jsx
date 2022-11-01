@@ -1,8 +1,10 @@
 import './Viz.css';
-import React, {useState} from 'react'
 import 'leaflet/dist/leaflet.css'
-import { MapContainer, TileLayer, GeoJSON, Polygon, Tooltip } from 'react-leaflet'
-import countries from '../dataCopy/custom.geo.json';
+import countries from "../dataCopy/custom.geo.json";
+import Legend from './Legend';
+import React, { useState } from "react";
+import { MapContainer, TileLayer, GeoJSON, Tooltip } from 'react-leaflet'
+
 
 export default function Viz({ filteredVizData }) {
   // TODO : Visualize the data!
@@ -29,6 +31,7 @@ export default function Viz({ filteredVizData }) {
     "#41b6c4",
     "#2c7fb8",
     "#253494",
+    "#d9d9d9",
   ];
   const dataRange = [0, 0.33, 1, 3, 9, 18, 100];
 
@@ -51,7 +54,7 @@ export default function Viz({ filteredVizData }) {
     const countryDetails = findCountryDetails(countryName);
 
     if (countryDetails === undefined) {
-      return "#d9d9d9";
+      return colors[colors.length -1];
     }
 
     for (let i = 0; i < dataRange.length; i++) {
@@ -82,8 +85,14 @@ export default function Viz({ filteredVizData }) {
   const setHoveredLayer = (e) => {
     let layer = e.target;
     layer.bringToFront();
-    setTooltipContent(findCountryDetails(remapCountryName(layer.feature.properties.name_en)));
-    setHoveredCountry(layer.feature);
+    const countryDetails = findCountryDetails(
+      remapCountryName(layer.feature.properties.name_en)
+    );
+
+    if (countryDetails !== undefined) {
+      setTooltipContent(countryDetails);
+      setHoveredCountry(layer.feature);
+    };
   };
 
   const resetHoveredLayer = (e) => {
@@ -96,6 +105,8 @@ export default function Viz({ filteredVizData }) {
       mouseout: resetHoveredLayer,
     });
   };
+
+
 
   return (
     <>
@@ -129,9 +140,10 @@ export default function Viz({ filteredVizData }) {
                     {Math.round(parseFloat(tooltipContent.mean) * 100) / 100}
                   </span>
                 </>
-              ) : null}
+              ) : <p>No Data</p>}
             </Tooltip>
           </GeoJSON>
+          <Legend dataRange={dataRange} colors={colors} />
         </MapContainer>
       </div>
     </>
