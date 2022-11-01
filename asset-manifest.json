@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/IHME_DataViz_Challenge/static/css/main.00dad012.css",
+    "main.js": "/IHME_DataViz_Challenge/static/js/main.5d74886d.js",
+    "static/js/787.e4c349b2.chunk.js": "/IHME_DataViz_Challenge/static/js/787.e4c349b2.chunk.js",
+    "static/media/GBD_2017_death_rate_opioid_use_disorders_all_ages.csv": "/IHME_DataViz_Challenge/static/media/GBD_2017_death_rate_opioid_use_disorders_all_ages.c4a75bca50d132cd5316.csv",
+    "index.html": "/IHME_DataViz_Challenge/index.html",
+    "main.00dad012.css.map": "/IHME_DataViz_Challenge/static/css/main.00dad012.css.map",
+    "main.5d74886d.js.map": "/IHME_DataViz_Challenge/static/js/main.5d74886d.js.map",
+    "787.e4c349b2.chunk.js.map": "/IHME_DataViz_Challenge/static/js/787.e4c349b2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.00dad012.css",
+    "static/js/main.5d74886d.js"
+  ]
+}
