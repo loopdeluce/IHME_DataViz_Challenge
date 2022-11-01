@@ -6,6 +6,7 @@
   "contributors": [
     "<ihmehr@uw.edu>"
   ],
+  "homepage": "https://loopdeluce.github.io/IHME_DataViz_Challenge/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
