@@ -4,9 +4,10 @@ import { csv } from 'https://cdn.skypack.dev/d3-fetch@3';
 import * as api from '../api';
 import ControlPanel from './ControlPanel';
 import Viz from './Viz';
+import Headline from './Headline';
 
 export default function App() {
-  // Example of how you could fetch data
+  // Example of how you could fetch data - LB 10/31: Server has been down for me since Mon, 10/24; Pulled the data from the provided CSV File
   // useEffect(() => {
   //   async function fetchData() {
   //     const metadata = await api.fetchMetadata();
@@ -22,7 +23,7 @@ export default function App() {
   // }, []);
 
   const [allData, setAllData] = useState([]);
-  const [sex, setSex] = useState('Females');
+  const [sex, setSex] = useState('Males');
   const [year, setYear] = useState(2017);
 
   useEffect(() => {
@@ -33,30 +34,30 @@ export default function App() {
     fetchData();
   }, [])
 
-  const filteredVizData = allData.filter(
-    datapoint => {
-      
-      let sexDatapoint;
-      switch (datapoint.sex) {
-        case 'Female':
-          sexDatapoint = 'Females'
-          break;
-        case 'Male':
-          sexDatapoint = 'Males'
-          break;
-        case 'Both':
-          sexDatapoint = 'Both sexes'
-          break;
-      } 
-      const sexBool = sexDatapoint === sex
-      const yearBool = datapoint.year === year
-      return sexBool && yearBool
-    });
+  const filteredVizData = allData.filter((datapoint) => {
+    let sexDatapoint;
+    switch (datapoint.sex) {
+      case "Female":
+        sexDatapoint = "Females";
+        break;
+      case "Male":
+        sexDatapoint = "Males";
+        break;
+      case "Both":
+        sexDatapoint = "Both sexes";
+        break;
+    }
+    const sexBool = sexDatapoint === sex;
+    const yearBool = parseInt(datapoint.year) === year;
+
+    return sexBool && yearBool;
+  });
 
   return (
     <div className="App">
+      <Headline/>
       <ControlPanel setSex={setSex} setYear={setYear} sex={sex} year={year}/>
-      {allData.length > 0 ? <Viz filteredVizData={filteredVizData} /> : null}
+      {allData.length > 0 && filteredVizData.length > 0 ? <Viz filteredVizData={filteredVizData} /> : null}
     </div>
   );
 }

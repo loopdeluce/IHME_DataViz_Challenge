@@ -2,6 +2,8 @@
     margin: 8px;
 }
 
-#map { 
-    height: 180px;
+
+.leaflet-tooltip span {
+    font-weight:bold;
 }
+

@@ -16,7 +16,7 @@ export default function ControlPanel({ setSex, setYear, sex, year}) {
   const handelYearChange = useCallback(
     (nextValue) => {
       console.log(nextValue);
-      setYear(nextValue);
+      setYear(parseInt(nextValue));
     },
     [setYear],
   );
